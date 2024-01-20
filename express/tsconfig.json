@@ -5,9 +5,10 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports":true,
     "baseUrl": "./",
     "paths": {
-      "*": ["src/*"]
+      "*": ["src/*", ""]
     }
   }
 }

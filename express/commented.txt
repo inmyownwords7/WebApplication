@@ -1,0 +1,47 @@
+// import { Octokit } from "@octokit/core";
+// import { restEndpointMethods } from "@octokit/plugin-rest-endpoint-methods";
+
+// const MyOctokit = Octokit.plugin(restEndpointMethods);
+// const octokit = new MyOctokit({ auth: "secret123" });
+
+// // https://developer.github.com/v3/users/#get-the-authenticated-user
+// octokit.rest.users.getAuthenticated();
+
+// import { RestEndpointMethodTypes } from "@octokit/plugin-rest-endpoint-methods";
+// type UpdateLabelParameters =
+//   RestEndpointMethodTypes["issues"]["updateLabel"]["parameters"];
+// type UpdateLabelResponse =
+//   RestEndpointMethodTypes["issues"]["updateLabel"]["response"];
+
+// async function gitHubClient() {
+//   const APP_ID = process.env.APP_ID;
+//   const PRIVATE_KEY = process.env.PRIVATE_KEY;
+//   const INSTALLATION_ID = process.env.INSTALLATION_ID;
+
+// //   const app = new App({
+// //     appId: APP_ID,
+// //     privateKey: PRIVATE_KEY,
+// //   });
+
+// //   const octokit = await app.getInstallationOctokit(INSTALLATION_ID);
+
+//   await octokit.request("GET /repos/{owner}/{repo}/issues", {
+//     owner: "github",
+//     repo: "docs",
+//     per_page: 2,
+//   });
+
+//   await octokit.request("POST /markdown/raw", {
+//     text: "Hello **world**",
+//     headers: {
+//       "content-type": "text/plain",
+//       "x-github-api-version": "2022-11-28",
+//     },
+//   });
+
+//   await octokit.rest.issues.listForRepo({
+//     owner: "github",
+//     repo: "docs",
+//     per_page: 2,
+//   });
+// }
