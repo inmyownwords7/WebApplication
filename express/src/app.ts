@@ -2,16 +2,21 @@
 import cors from "cors";
 import express, { Express, Request, Response } from "express";
 import { google } from "googleapis";
-import { authenticate } from "./middleware/githubClient";
+//import { authenticate } from "./middleware/githubClient";
 import morgan from "morgan";
 import { authorize } from "./middleware/googleclient";
 import { router } from "./middleware/routes";
 import { setHeaders } from "./middleware/middlewares";
+import {readJsonFile} from "./middleware/readJsonFile";
 import { App, createNodeMiddleware } from "octokit";
+import {GoogleAuth} from "google-auth-library";
 //initialize Express
 const app: Express = express();
 const expressApp: Express = express();
-
+interface MyObject {
+  id: number;
+  name: string;
+}
 // const octoKitApp = new App({
 //   appId,
 //   privateKey,
@@ -71,10 +76,30 @@ app.get("/calendar", async (req: Request, res: Response) => {
 });
 
 async function main() {
-  await authenticate();
+  //await authenticate();
+  const filePath = 'credentials.json';
+  try {
+    const objectArray = await readJsonFile(filePath);
+    if (objectArray) {
+      console.log('Array of objects:', objectArray); // Log the content
+    } else {
+      console.log('Error reading or parsing JSON.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+
+  const auth = new GoogleAuth({
+    scopes: 'https://www.googleapis.com/auth/cloud-platform'
+  });
+  const client = await auth.getClient();
+  const projectId = await auth.getProjectId();
+  const url = `https://dns.googleapis.com/dns/v1/projects/${projectId}`;
+  const res = await client.request({ url });
+  console.log(res.data);
 }
 
-main();
+main().catch(err => console.error(err));
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}/api`);

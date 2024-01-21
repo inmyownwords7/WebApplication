@@ -25,6 +25,7 @@
   "dependencies": {
     "googleapis": "^131.0.0"
   },
-  "workspaces": ["./packages/*"]
-  
+  "workspaces": [
+    "./packages/*"
+  ]
 }
