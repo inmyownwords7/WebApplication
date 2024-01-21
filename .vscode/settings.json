@@ -8,5 +8,5 @@
     "**/Thumbs.db": true
   },
   "hide-files.files": [".history"],
-  "cSpell.words": ["webapplication"]
+  "cSpell.words": ["preinstall", "prestart", "webapplication"]
 }

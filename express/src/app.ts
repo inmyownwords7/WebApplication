@@ -1,17 +1,26 @@
 // @ts-ignore
 import cors from "cors";
-import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import { google } from "googleapis";
-import { getRepo } from "./middleware/githubClient";
+import { authenticate } from "./middleware/githubClient";
 import morgan from "morgan";
 import { authorize } from "./middleware/googleclient";
-import { router } from "middleware/routes";
-import { setHeaders } from "middleware/middlewares";
-
-dotenv.config();
-
+import { router } from "./middleware/routes";
+import { setHeaders } from "./middleware/middlewares";
+import { App, createNodeMiddleware } from "octokit";
+//initialize Express
 const app: Express = express();
+const expressApp: Express = express();
+
+// const octoKitApp = new App({
+//   appId,
+//   privateKey,
+//   webhooks: { secret },
+//   oauth: { clientId, clientSecret },
+// });
+
+expressApp.use(createNodeMiddleware(app));
+
 const octokit = {
   auth: process.env.GITHUB_ACCESS_TOKEN,
 };
@@ -62,13 +71,16 @@ app.get("/calendar", async (req: Request, res: Response) => {
 });
 
 async function main() {
-  await getRepo(octokit);
+  await authenticate();
 }
 
 main();
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}/api`);
+});
+expressApp.listen(3001, () => {
+  console.log(`Listening at http://localhost:3001/api`);
 });
 
 server.on("error", console.error);

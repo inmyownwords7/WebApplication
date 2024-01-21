@@ -1,13 +1,29 @@
 import { Octokit } from "octokit";
+import dotenv from "dotenv";
+import path from "path";
 
-const octokit = new Octokit({
-  auth: process.env.GITHUB_ACCESS_TOKEN,
-});
+// let a = path.resolve(path.normalize('G:\\Github\\WebApp\\WebApplication\\.env'))
+let env = path.join("G:\\Github\\WebApp\\WebApplication\\", ".env");
+// console.log(env)
+// dotenv.config({path: path.join(path.resolve('./', '.env'))});
+dotenv.config({ path: env });
 
-export async function getRepo(octokit: { auth?: string; request?: any; }) {
-  await octokit.request("GET /user", {
-    headers: {
-      "X-GitHub-Api-Version": "2022-11-28",
-    },
+export async function authenticate() {
+  const octokit = new Octokit({
+    auth: process.env.GITHUB_ACCESS_TOKEN,
   });
+
+  console.log(process.env.GITHUB_ACCESS_TOKEN + " github key");
+  //   const {
+  //     data: { login },
+  //   } = await octokit.rest.users.getAuthenticated();
+  //   console.log("Hello, %s", login);
+  // }
+  try {
+    const res = await octokit.rest.users.getAuthenticated();
+    const userData = res.data;
+    console.log(userData)
+  } catch (err) {
+    console.error(err.message);
+  }
 }
