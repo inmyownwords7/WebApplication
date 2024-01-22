@@ -133,3 +133,10 @@ dist
 .flaskenv*
 !.env.project
 !.env.vault
+.idea/aws.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/jsLibraryMappings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/WebApplication.iml
