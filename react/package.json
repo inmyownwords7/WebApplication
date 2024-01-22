@@ -14,6 +14,7 @@
     "@emailjs/browser": "^3.12.1",
     "@react-buddy/ide-toolbox": "^2.4.0",
     "axios": "^1.6.5",
+    "dotenv-expand": "^10.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-calendar-api": "^2.3.0",

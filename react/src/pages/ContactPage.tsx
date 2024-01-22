@@ -6,7 +6,7 @@ interface ContactFormData {
   country: string;
   subject: string;
 }
-
+/** @Email Should be inserted here*/
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>({
     firstname: '',

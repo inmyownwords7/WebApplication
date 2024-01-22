@@ -20,6 +20,7 @@ export default defineConfig({
   },
 
   plugins: [react()],
+  envDir: './',
 
   // Uncomment this if you are using workers.
   // worker: {

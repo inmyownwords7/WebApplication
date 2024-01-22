@@ -1,8 +1,0 @@
-{
-  "regular": "https://www.googleapis.com/auth/calendar",
-  "readonly": "https://www.googleapis.com/auth/calendar.readonly",
-  "events": "https://www.googleapis.com/auth/calendar.events",
-  "events-readonly": "https://www.googleapis.com/auth/calendar.events.readonly",
-  "settings": "https://www.googleapis.com/auth/calendar.settings.readonly",
-  "addons": "https://www.googleapis.com/auth/calendar.addons.execute"
-}

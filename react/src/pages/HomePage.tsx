@@ -1,18 +1,29 @@
 // src/pages/HomePage.tsx
 import React from "react";
-import HeroImage from "../components/HeroImage";
 import "../css/Homepage.css";
 
 interface HomePageProps {
   title: string;
 }
-
+/**@LeftComponent
+ * @CenterPageComponent
+ * @RightComponent*/
 const HomePage: React.FC<HomePageProps> = ({ title }: HomePageProps) => {
   return (
     <>
-      <HeroImage />
-      <div className="container">{/* Rest of your content */}</div>
-
+      <div className="container"></div>
+      <div className="box left-container">
+        {/* Left Component */}
+        {/* Add your left component content here */}
+      </div>
+      <div className="box center-container">
+        {/* Center Component */}
+        {/* Add your center component content here */}
+      </div>
+      <div className="box right-container">
+        {/* Right Component */}
+        {/* Add your right component content here */}
+      </div>
     </>
   );
 };

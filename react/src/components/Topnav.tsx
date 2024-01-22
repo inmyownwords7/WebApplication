@@ -12,9 +12,7 @@ class Topnav extends Component {
         <Link className="active" to="">
           Home
         </Link>
-        <Link to="news">News</Link>
-        <Link to="contact">Contact</Link>
-        <Link to="about">About</Link>
+        <Link to="contact">Contact Us</Link>
         <Link to="github">Github</Link>
       </div>
     );

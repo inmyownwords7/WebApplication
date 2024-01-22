@@ -1,7 +1,7 @@
 import { Octokit } from "octokit";
 import express from "express";
 
-console.log(process.env.GITHUB_ACCESS_TOKEN + " github key");
+console.log((process.env.GITHUB_ACCESS_TOKEN || "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") + " github key");
 
 const gitRoute = express.Router();
  
@@ -14,7 +14,7 @@ async function getUserData(username: string) {
     const res = await octokit.rest.users.getByUsername({
       username,
     });
-
+//returns data as JSON 
     return res.data;
   } catch (err) {
     throw err;

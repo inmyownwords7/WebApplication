@@ -17,8 +17,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/api", (req, res) => {
+  res.send("Welcome ")
+})
 // HTTP POST request for Contact Page
-app.post('/send-email', (req: Request, res: Response) => {
+app.post('/api/send-email', (req: Request, res: Response) => {
   // Handle email sending logic here using the data from req.body
   const emailSendingResult = sendEmail(req.body);
 
@@ -51,4 +54,8 @@ const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}/api`);
 });
+
+server.on('error', (err) => {
+  console.error(err)
+})
 

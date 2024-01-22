@@ -21,3 +21,28 @@ h1 {
 p {
     color: #666;
 }
+
+/* src/css/Homepage.css */
+.container {
+    display: flex; /* Use flexbox to position boxes side by side */
+}
+
+.box {
+    border: 2px solid #ccc; /* Make the border thicker */
+    padding: 20px; /* Add padding for spacing */
+    margin: 10px; /* Add margin for spacing between boxes */
+    flex: 1; /* Distribute available space evenly among boxes */
+}
+
+/* Additional styles for individual containers if needed */
+.left-container {
+    /* Additional styles for the left container if needed */
+}
+
+.center-container {
+    /* Additional styles for the center container if needed */
+}
+
+.right-container {
+    /* Additional styles for the right container if needed */
+}
