@@ -8,5 +8,18 @@
     "**/Thumbs.db": true
   },
   "hide-files.files": [".history"],
-  "cSpell.words": ["preinstall", "prestart", "webapplication"]
+  "cSpell.words": [
+    "emailsjs",
+    "firstname",
+    "fname",
+    "gapi",
+    "KHTML",
+    "lastname",
+    "lname",
+    "preinstall",
+    "prestart",
+    "reponame",
+    "Topnav",
+    "webapplication"
+  ]
 }

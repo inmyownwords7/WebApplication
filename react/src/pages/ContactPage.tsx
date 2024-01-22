@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-
+import '../css/ContactUs.css'
 interface ContactFormData {
   firstname: string;
   lastname: string;
@@ -41,7 +41,7 @@ const ContactPage: React.FC = () => {
       </div>
       <div className="row">
         <div className="column">
-          <img src="/w3images/map.jpg" style={{ width: '100%' }} alt="Map" />
+   
         </div>
         <div className="column">
           <form onSubmit={handleSubmit}>

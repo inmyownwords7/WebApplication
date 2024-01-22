@@ -1,5 +1,7 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent} from 'react';
+// @ts-ignore
 import emailjs from 'emailjs'
+
 interface FormData {
     name: string;
     email: string;

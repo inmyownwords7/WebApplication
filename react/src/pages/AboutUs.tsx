@@ -3,7 +3,7 @@ import React from 'react';
 import Topnav from '../components/Topnav';
 import AboutUsSection from '../components/AboutUsSection';
 import TeamSection from '../components/TeamSection';
-import '../Homepage.css';
+import '../css/Homepage.css';
 
 const AboutUsPage: React.FC = () => {
   return (
@@ -15,7 +15,6 @@ const AboutUsPage: React.FC = () => {
         <link rel="stylesheet" href="" />
       </head>
       <body>
-        <Topnav />
         <AboutUsSection />
         <TeamSection />
         <div className="container">{/* Rest of your content */}</div>

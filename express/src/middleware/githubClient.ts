@@ -1,29 +1,36 @@
 import { Octokit } from "octokit";
-import dotenv from "dotenv";
-import path from "path";
+import express from "express";
 
-// let a = path.resolve(path.normalize('G:\\Github\\WebApp\\WebApplication\\.env'))
-let env = path.join("G:\\Github\\WebApp\\WebApplication\\", ".env");
-// console.log(env)
-// dotenv.config({path: path.join(path.resolve('./', '.env'))});
-dotenv.config({ path: env });
+console.log(process.env.GITHUB_ACCESS_TOKEN + " github key");
 
-export async function authenticate() {
-  const octokit = new Octokit({
-    auth: process.env.GITHUB_ACCESS_TOKEN,
-  });
-
-  console.log(process.env.GITHUB_ACCESS_TOKEN + " github key");
-  //   const {
-  //     data: { login },
-  //   } = await octokit.rest.users.getAuthenticated();
-  //   console.log("Hello, %s", login);
-  // }
+const gitRoute = express.Router();
+ 
+async function getUserData(username: string) {
   try {
-    const res = await octokit.rest.users.getAuthenticated();
-    const userData = res.data;
-    console.log(userData)
+    const octokit = new Octokit({
+      auth: process.env.GITHUB_ACCESS_TOKEN,
+    });
+
+    const res = await octokit.rest.users.getByUsername({
+      username,
+    });
+
+    return res.data;
   } catch (err) {
-    console.error(err.message);
+    throw err;
   }
 }
+
+gitRoute.get("/get/:username", async (req, res) => {
+  try {
+    const username = req.params.user;
+    const userData = await getUserData(username);
+    console.log(userData);
+    res.json(userData);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+export default gitRoute;

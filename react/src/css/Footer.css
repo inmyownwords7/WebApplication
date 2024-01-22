@@ -1,11 +1,31 @@
 /* Footer.css */
 
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: red;
-    color: white;
-    text-align: center;
-  }  
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #51e2f5;
+  /* Dark color for better visibility */
+  color: #fff;
+  /* White text on dark background */
+  text-align: center;
+  font-size: 16px;
+  /* Increased font size */
+}
+
+/* Additional styling for the trademark text */
+.footer span {
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Bright blue: #51e2f5
+
+Blue Green: #9df9ef
+
+Dusty White: #edf756
+
+Pink Sand: #ffa8B6
+
+Dark Sand: #a28089 */

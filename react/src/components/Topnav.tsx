@@ -1,19 +1,21 @@
 // src/components/Navbar.tsx
 // @ts-ignore
 // eslint-disable-next-line no-unused-vars
-import React, { Component } from 'react';
-import '../css/Topnav.css';
+import React, { Component } from "react";
+import "../css/Topnav.css";
+import { Link } from "react-router-dom";
 
 class Topnav extends Component {
   render() {
     return (
       <div className="Topnav">
-        <a className="active" href="#home">
+        <Link className="active" to="">
           Home
-        </a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        </Link>
+        <Link to="news">News</Link>
+        <Link to="contact">Contact</Link>
+        <Link to="about">About</Link>
+        <Link to="github">Github</Link>
       </div>
     );
   }
