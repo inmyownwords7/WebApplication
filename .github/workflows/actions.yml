@@ -1,0 +1,55 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive  # Add this line to include submodules if needed
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 14  # Update to the desired Node.js version
+
+      - name: Install dependencies
+        run: |
+          cd WebAssignment
+          npm install
+
+      - name: Restart PM2
+        run: |
+          cd WebAssignment
+          pm2 restart
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ vars.GIT_URL }}
+          username: ${{ vars.username }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          passphrase: ${{ secrets.passphrase }}
+          script: |
+            cd WebAssignment
+            git pull origin main
+            npm install
+            pm2 restart
+
+      # Add more steps as needed for your specific deployment workflow
