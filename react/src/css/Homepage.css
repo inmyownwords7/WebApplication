@@ -1,9 +1,4 @@
-/* src/pages/HomePage.css */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-}
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 img {
     width: 100%;
@@ -14,35 +9,81 @@ img {
     padding: 20px;
 }
 
-h1 {
-    color: #333;
-}
-
-p {
-    color: #666;
-}
-
 /* src/css/Homepage.css */
 .container {
-    display: flex; /* Use flexbox to position boxes side by side */
+    display: flex;
+    /* Use flexbox to position boxes side by side */
 }
 
 .box {
-    border: 2px solid #ccc; /* Make the border thicker */
-    padding: 20px; /* Add padding for spacing */
-    margin: 10px; /* Add margin for spacing between boxes */
-    flex: 1; /* Distribute available space evenly among boxes */
+    border: 2px solid #ccc;
+    /* Make the border thicker */
+    padding: 20px;
+    /* Add padding for spacing */
+    margin: 10px;
+    /* Add margin for spacing between boxes */
+    flex: 1;
+    /* Distribute available space evenly among boxes */
 }
 
-/* Additional styles for individual containers if needed */
-.left-container {
-    /* Additional styles for the left container if needed */
+#homepageBackdrop {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    background-color: black;
 }
 
-.center-container {
-    /* Additional styles for the center container if needed */
+#homepageBackground {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    background-size: cover;
+    opacity: 30%;
 }
 
-.right-container {
-    /* Additional styles for the right container if needed */
+.homepageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    height: calc(100vh - 200px);
+    padding-left: 100px;
+    padding-right: 100px;
+    font-family: "Roboto", sans-serif;
+}
+
+#homepageTitle {
+    font-size: 4.5rem;
+    line-height: 1;
+}
+
+#homepageSubtitle {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+#homepageText {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 40;
+}
+
+#homepageArrow {
+    width: 60px;
+    height: 60px;
+    border: 1px solid white;
+    border-radius: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#homepageArrow:hover {
+    /* border-color: #00da8a; */
+    filter: invert(70%) sepia(27%) saturate(2055%) hue-rotate(104deg) brightness(90%) contrast(101%);
 }

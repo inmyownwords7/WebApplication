@@ -1,6 +1,9 @@
 // src/pages/HomePage.tsx
 import React from "react";
 import "../css/Homepage.css";
+import backgroundImage from "../assets/background.jpg";
+import arrow from "../assets/arrow.svg";
+import { Link } from "react-router-dom";
 
 interface HomePageProps {
   title: string;
@@ -11,18 +14,24 @@ interface HomePageProps {
 const HomePage: React.FC<HomePageProps> = ({ title }: HomePageProps) => {
   return (
     <>
-      <div className="container"></div>
-      <div className="box left-container">
-        {/* Left Component */}
-        {/* Add your left component content here */}
-      </div>
-      <div className="box center-container">
-        {/* Center Component */}
-        {/* Add your center component content here */}
-      </div>
-      <div className="box right-container">
-        {/* Right Component */}
-        {/* Add your right component content here */}
+      <div id="homepageBackdrop"></div>
+      <div
+        id="homepageBackground"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      ></div>
+      <div className="homepageContainer">
+        <div>
+          <h1 id="homepageTitle">Perry Olsson</h1>
+          <h2 id="homepageSubtitle">Full-stack Developer</h2>
+          <h3 id="homepageText">
+            Engineering elegant, performant, and powerful web applications.
+          </h3>
+        </div>
+        <Link to="contact">
+          <div id="homepageArrow">
+            <img src={arrow}></img>
+          </div>
+        </Link>
       </div>
     </>
   );

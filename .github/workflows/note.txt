@@ -1,0 +1,42 @@
+      
+             - name: 
+                if: github.event_name == 'push' && github.ref == 'refs/heads/main'  
+                uses: appleboy/ssh-action@master
+                with: 
+                    host: ${{ vars.GITURL }}
+                    username: ${{ vars.username}} 
+                    key: ${{ secrets.PRIVATE_KEY }}
+                    passphrase: ${{ secrets.passphrase }}
+                    script: |
+                     cd WebAssignment
+                     git pull origin main
+                     npm install
+                     pm2 restart 
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with: 
+            ssh-key: ${{ secrets.SSH-KEY}}
+            github-server-url: ${{ vars.github-url}}
+      
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.1
+        with:
+          node-version: 20.0.x
+
+      - name: install devdependencies
+        run: npm i --save-dev pm2 concurrently cross-env=${{ vars.NODE_ENV}}
+
+      - name: install dependencies
+        run: npm i cross-env=${{ vars.NODE_ENV }}

@@ -1,35 +1,36 @@
 import { Octokit } from "octokit";
 import express from "express";
-
-console.log((process.env.GITHUB_ACCESS_TOKEN || "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") + " github key");
+import * as fs from "fs";
+import * as readline from "readline";
 
 const gitRoute = express.Router();
- 
-async function getUserData(username: string) {
-  try {
-    const octokit = new Octokit({
-      auth: process.env.GITHUB_ACCESS_TOKEN,
-    });
 
-    const res = await octokit.rest.users.getByUsername({
-      username,
-    });
-//returns data as JSON 
-    return res.data;
-  } catch (err) {
-    throw err;
-  }
+// const rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+// });
+
+async function getUserData(username: string) {
+  console.log(process.env.GITHUB_ACCESS_TOKEN);
+  console.log(username);
+  const octokit = new Octokit({
+    auth: process.env.GITHUB_ACCESS_TOKEN,
+  });
+
+  const res = await octokit.rest.users.getAuthenticated();
+
+  //returns data as JSON
+  return res.data;
 }
 
-gitRoute.get("/get/:username", async (req, res) => {
+gitRoute.get("/get", async (req, res) => {
+  console.log("u h h");
+  const username = req.params.username;
   try {
-    const username = req.params.user;
     const userData = await getUserData(username);
-    console.log(userData);
-    res.json(userData);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(200).send(userData);
+  } catch {
+    res.status(500).send();
   }
 });
 

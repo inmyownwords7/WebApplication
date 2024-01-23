@@ -3,20 +3,43 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from "react";
 import "../css/Topnav.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-class Topnav extends Component {
-  render() {
-    return (
-      <div className="Topnav">
+const Topnav: React.FC<{}> = () => {
+  const { pathname } = useLocation();
+
+  return (
+    <div
+      className="Topnav"
+      style={{
+        color: pathname != "/" ? "black" : "white",
+      }}
+    >
+      <div>
         <Link className="active" to="">
           Home
         </Link>
-        <Link to="contact">Contact Us</Link>
-        <Link to="github">Github</Link>
       </div>
-    );
-  }
-}
+      <div>
+        <Link
+          to="contact"
+          style={{
+            color: pathname == "/contact" ? "#4affae" : "inherit",
+          }}
+        >
+          Contact Me
+        </Link>
+        <Link
+          to="projects"
+          style={{
+            color: pathname == "/projects" ? "#4affae" : "inherit",
+          }}
+        >
+          Projects
+        </Link>
+      </div>
+    </div>
+  );
+};
 
 export default Topnav;

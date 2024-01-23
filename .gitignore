@@ -141,3 +141,5 @@ dist
 .idea/vcs.xml
 .idea/WebApplication.iml
 !/express/src/middleware/credentials.json
+/.idea
+/.vscode

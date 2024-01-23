@@ -1,13 +1,21 @@
 /* ContactUs.css */
 
 .container {
-  max-width: 600px;
+  max-width: 800px;
   margin: auto;
   padding: 20px;
 }
 
-h2 {
-  text-align: center;
+.container label {
+  text-align: left;
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+
+.row {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 form {

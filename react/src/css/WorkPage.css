@@ -1,0 +1,57 @@
+#projectList {
+    display: flex;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 175px;
+    margin-top: 50px;
+}
+
+.projectImage {
+    width: 25vw;
+    height: 25vw;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(201, 201, 201);
+    overflow: hidden;
+}
+
+.projectImage img {
+    width: 25vw;
+    height: 25vw;
+}
+
+.projectImage img {
+    transition: transform 0.1s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.projectImage:hover img {
+    transform: scale(1.1);
+}
+
+#projectsTitleContainer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 3rem;
+    letter-spacing: 2px;
+}
+
+.pageDivider {
+    margin-top: 20px;
+    border-bottom: 2px solid rgb(170, 170, 170);
+    width: 40vw;
+}
+
+#projectsTitleContainer h1 {
+    letter-spacing: 4px;
+    font-size: 2.2rem;
+}
+
+#projectsTitleContainer h2 {
+    letter-spacing: 4px;
+    font-size: 1.2rem;
+}

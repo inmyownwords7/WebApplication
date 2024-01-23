@@ -1,5 +1,7 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-import '../css/ContactUs.css'
+import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
+import "../css/ContactUs.css";
+import emailjs from "@emailjs/browser";
+
 interface ContactFormData {
   firstname: string;
   lastname: string;
@@ -8,11 +10,21 @@ interface ContactFormData {
 }
 /** @Email Should be inserted here*/
 const ContactPage: React.FC = () => {
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all")
+      .then((response) => response.json())
+      .then((body: any) => {
+        setCountries(body.map((country: any) => country.name.common));
+      });
+  }, []);
+
+  const [countries, setCountries] = useState<Array<string>>([]);
+
   const [formData, setFormData] = useState<ContactFormData>({
-    firstname: '',
-    lastname: '',
-    country: 'australia',
-    subject: '',
+    firstname: "",
+    lastname: "",
+    country: "australia",
+    subject: "",
   });
 
   const handleChange = (
@@ -29,22 +41,36 @@ const ContactPage: React.FC = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    // Use formData for further processing
+
     console.log(formData);
+
+    emailjs
+      .sendForm(
+        "service_s0ke1ue",
+        "template_ei9ibh2",
+        "#contactForm",
+        "n9XCehjt--EDjVLFT"
+      )
+      .then(
+        (result: any) => {
+          console.log(result.text);
+          alert("Success! Thank you for your email.");
+        },
+        (error: any) => {
+          console.log(error.text);
+        }
+      );
   };
 
   return (
     <div className="container">
-      <div style={{ textAlign: 'center' }}>
-        <h2>Contact Us</h2>
-        <p>Swing by for a cup of coffee, or leave us a message:</p>
-      </div>
       <div className="row">
-        <div className="column">
-   
+        <div style={{ textAlign: "center" }}>
+          <h2>Contact Me</h2>
+          <p>Want to work together? Send me an email!</p>
         </div>
         <div className="column">
-          <form onSubmit={handleSubmit}>
+          <form id="contactForm" onSubmit={handleSubmit}>
             <label htmlFor="fname">First Name</label>
             <input
               type="text"
@@ -70,16 +96,18 @@ const ContactPage: React.FC = () => {
               value={formData.country}
               onChange={handleChange}
             >
-              <option value="australia">Australia</option>
-              <option value="canada">Canada</option>
-              <option value="usa">USA</option>
+              {countries.sort().map((country) => (
+                <option key={country} value={country}>
+                  {country}
+                </option>
+              ))}
             </select>
             <label htmlFor="subject">Subject</label>
             <textarea
               id="subject"
               name="subject"
               placeholder="Write something.."
-              style={{ height: '170px' }}
+              style={{ height: "170px" }}
               value={formData.subject}
               onChange={handleChange}
             ></textarea>

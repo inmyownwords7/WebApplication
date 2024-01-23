@@ -5,12 +5,17 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #51e2f5;
   /* Dark color for better visibility */
   color: #fff;
   /* White text on dark background */
   text-align: center;
   font-size: 16px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 30px;
   /* Increased font size */
 }
 
@@ -20,12 +25,13 @@
   font-style: italic;
 }
 
-/* Bright blue: #51e2f5
+.socialLink {
+  width: 40px;
+  height: 40px;
+  padding-right: 20px;
+  cursor: pointer;
+}
 
-Blue Green: #9df9ef
-
-Dusty White: #edf756
-
-Pink Sand: #ffa8B6
-
-Dark Sand: #a28089 */
+.socialLinkBlack {
+  filter: invert(95%) sepia(100%) saturate(14%) hue-rotate(213deg) brightness(104%) contrast(104%);
+}
